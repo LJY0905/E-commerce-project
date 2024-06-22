@@ -14,6 +14,8 @@
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
+
+      <el-button type="primary">Primary</el-button>
     </div>
   </header>
 
