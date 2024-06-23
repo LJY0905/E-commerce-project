@@ -13,7 +13,7 @@ const router = createRouter({
       component: Index,
       children: [
         {
-          path: '',
+          path: '',// 默认二级路由
           component: Home
         },
         {
