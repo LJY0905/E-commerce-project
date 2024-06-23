@@ -1,16 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import Login from '@/views/login/Login.vue'
-import Index from '@/views/pages/Index.vue'
-import Home from '@/views/pages/children/Home.vue'
-import Category from '@/views/pages/children/Category.vue'
+import Layout from '@/views/Layout/Layout.vue'
+import Home from '@/views/Home/Home.vue'
+import Category from '@/views/Category/Category.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      component: Index,
+      component: Layout,
       children: [
         {
           path: '',// 默认二级路由
