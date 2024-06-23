@@ -34,15 +34,15 @@
         <div class="slogan">
           <a href="javascript:;">
             <i class="iconfont icon-footer01"></i>
-            <span>价格亲民</span>
+            <span>品质新鲜</span>
           </a>
           <a href="javascript:;">
             <i class="iconfont icon-footer02"></i>
-            <span>物流快捷</span>
+            <span>价格亲民</span>
           </a>
           <a href="javascript:;">
             <i class="iconfont icon-footer03"></i>
-            <span>品质新鲜</span>
+            <span>物流快捷</span>
           </a>
         </div>
         <!-- 版权信息 -->
