@@ -16,7 +16,7 @@ const bannerList = ref([])
 
 const geyBannerList = async () => {
   try {
-    const { result: res = [] } = await getBannerAPI()
+    const { result: res = [] } = await getBannerAPI({ distributionSite: '1' })
     console.log(res)
     bannerList.value = res
   } catch (error) {

@@ -1,11 +1,13 @@
 import httpInstance from '@/utils/http'
 
-export const getBannerAPI = () => {
+export const getBannerAPI = (params) => {
     return httpInstance({
         url: 'home/banner',
-        method: 'GET'
+        method: 'GET',
+        params
     })
 }
+
 
 export const getNewAPI = () => {
     return httpInstance({
