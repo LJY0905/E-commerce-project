@@ -1,9 +1,3 @@
-<script setup>
-import { ref } from 'vue'
-
-const isLogin = ref(true)
-</script>
-
 <template>
   <div class="topnav">
     <div class="container">
@@ -13,7 +7,12 @@ const isLogin = ref(true)
             <a href="javascript:;"><i class="iconfont icon-user"></i>刘婧怡</a>
           </li>
           <li>
-            <el-popconfirm title="确认退出吗?" confirm-button-text="确认" cancel-button-text="取消">
+            <el-popconfirm
+              title="确认退出吗?"
+              confirm-button-text="确认"
+              cancel-button-text="取消"
+              @confirm="confirmLogout"
+            >
               <template #reference>
                 <a href="javascript:;">退出登录</a>
               </template>
@@ -23,7 +22,7 @@ const isLogin = ref(true)
           <li><a href="javascript:;">会员中心</a></li>
         </template>
         <template v-else>
-          <li><a href="javascript">请登录</a></li>
+          <li><a href="javascript:;" @click="router.push('/login')">请先登录</a></li>
           <li><a href="javascript">帮助中心</a></li>
           <li><a href="javascript">关于我们</a></li>
         </template>
@@ -32,6 +31,24 @@ const isLogin = ref(true)
   </div>
 </template>
 
+<script setup>
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useUserStore } from '@/stores/user'
+const router = useRouter()
+
+const isLogin = ref(false)
+
+const userStore = useUserStore()
+const confirmLogout = () => {
+  console.log('用户要退出登录了')
+  // 退出登录业务逻辑实现
+  // 1.清除用户信息 触发action
+  userStore.clearUserInfo()
+  // 2.跳转到登录页
+  router.push('/login')
+}
+</script>
 <style scoped lang="scss">
 .topnav {
   background-color: #333;
