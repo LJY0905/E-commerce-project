@@ -2,9 +2,11 @@
   <div class="topnav">
     <div class="container">
       <ul>
-        <template v-if="isLogin">
+        <template v-if="userStore.userInfo.token">
           <li>
-            <a href="javascript:;"><i class="iconfont icon-user"></i>刘婧怡</a>
+            <a href="javascript:;">
+              <i class="iconfont icon-user"></i>{{ userStore.userInfo.account }}
+            </a>
           </li>
           <li>
             <el-popconfirm
@@ -33,13 +35,14 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
+
+const route = useRoute()
 const router = useRouter()
 
-const isLogin = ref(false)
-
 const userStore = useUserStore()
+
 const confirmLogout = () => {
   console.log('用户要退出登录了')
   // 退出登录业务逻辑实现

@@ -67,11 +67,12 @@
 import { ref, reactive } from 'vue'
 
 import { useRouter } from 'vue-router'
+import { useUserStore } from '@/stores/user'
 import { ElMessage } from 'element-plus'
 import 'element-plus/theme-chalk/el-message.css'
 
-import { loginAPI } from '@/apis/user'
 const router = useRouter()
+const userStore = useUserStore()
 const loginForm = ref({
   account: '',
   password: '',
@@ -106,7 +107,7 @@ const doLogin = (formEl) => {
     // 以valid做为判断条件 如果通过校验才执行登录逻辑
     if (valid) {
       // TODO LOGIN
-      await loginAPI({ account, password })
+      userStore.getUserInfo({ account, password })
       // 1. 提示用户
       ElMessage({ type: 'success', message: '登录成功' })
       // 2. 跳转首页

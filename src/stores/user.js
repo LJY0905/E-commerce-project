@@ -11,6 +11,7 @@ export const useUserStore = defineStore('user', () => {
     const getUserInfo = async ({ account, password }) => {
         const res = await loginAPI({ account, password })
         userInfo.value = res.result
+        console.log(userInfo.value)
     }
     const clearUserInfo = () => {
         userInfo.value = {}
