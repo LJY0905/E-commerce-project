@@ -148,15 +148,16 @@ const skuChange = (sku) => {
 
 const handleAddClick = () => {
   if (skuObj.value?.skuId) {
+    //规格已选择
     cartStore.addCart({
       id: goods.value.id,
       name: goods.value.name,
-      pictures: goods.value.pictures,
+      picture: goods.value.mainPictures[0],
       price: goods.value.price,
       count: count.value,
-      skuId: skuObj.skuId,
-      attrsText: skuObj.specsText,
-      selectd: true
+      skuId: skuObj.value.skuId,
+      attrsText: skuObj.value.specsText,
+      selected: true
     })
   } else {
     ElMessage({ type: 'warning', message: '请选择商品规格' })
