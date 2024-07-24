@@ -9,7 +9,6 @@
                 <el-checkbox :modelValue="cartStore.isAllCheck" @change="allCheck" />
               </th>
               <th width="400">商品信息</th>
-              <th width="400">商品信息</th>
               <th width="220">单价</th>
               <th width="180">数量</th>
               <th width="180">小计</th>
@@ -50,7 +49,7 @@
                     title="确认删除吗?"
                     confirm-button-text="确认"
                     cancel-button-text="取消"
-                    @confirm="delCart(i)"
+                    @confirm="cartStore.delCart(i.skuId)"
                   >
                     <template #reference>
                       <a href="javascript:;">删除</a>
@@ -63,7 +62,7 @@
               <td colspan="6">
                 <div class="cart-none">
                   <el-empty description="购物车列表为空">
-                    <el-button type="primary">随便逛逛</el-button>
+                    <el-button type="primary" @click="backToHome">随便逛逛</el-button>
                   </el-empty>
                 </div>
               </td>
@@ -78,7 +77,7 @@
           <span class="red">¥ {{ cartStore.checkPrice }} </span>
         </div>
         <div class="total">
-          <el-button size="large" type="primary">下单结算</el-button>
+          <el-button size="large" type="primary" @click="handleCheckOut">下单结算</el-button>
         </div>
       </div>
     </div>
@@ -87,15 +86,24 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { useCartStore } from '@/stores/cart'
 const cartStore = useCartStore()
 
+const router = useRouter()
+const handleCheckOut = () => {
+  router.push('/checkout')
+}
 const singleCheck = (val, selected) => {
   cartStore.singleCheck(val.skuId, selected)
 }
 
 const allCheck = (selected) => {
   cartStore.allCheck(selected)
+}
+
+const backToHome = () => {
+  router.push('/')
 }
 </script>
 
