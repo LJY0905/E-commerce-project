@@ -188,7 +188,7 @@ const handleSubmitOrder = async () => {
     console.log(error)
   }
   // 更新购物车
-  cartStore.updateNewList()
+  cartStore.getCartList()
 }
 
 onMounted(() => {

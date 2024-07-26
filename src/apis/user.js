@@ -7,3 +7,19 @@ export const loginAPI = (params) => {
         data: params
     })
 }
+export const getLikeListAPI = ({ limit = 4 }) => {
+    return httpInstance({
+        url: '/goods/relevant',
+        params: {
+            limit
+        }
+    })
+}
+
+export const getUserOrder = (params) => {
+    return httpInstance({
+        url: '/member/order',
+        method: 'GET',
+        params
+    })
+}
